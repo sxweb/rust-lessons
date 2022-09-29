@@ -1,23 +1,18 @@
+struct Rectangle{
+    w: i32,
+    h: i32
+}
 
 fn main(){
-    let mut counter = 0;
-    let mut lang = ["C#", "Rust", "Python"];
-    lang[0] = "Java Script";
+    let anon_func = || {
+        println!("I am anonymous");
+    };
 
-    for i in lang.iter(){
-        println!("Lang: {}", i);
-    }
+    let result = anon_func();
+    let area = |r: Rectangle| -> i32{
+        r.w * r.h
+    };
 
-    loop{        
-        counter += 1;
-        if counter >= 5{
-            break;
-        }
-        println!("I love Rust");
-    }
-    let mut some = true;
-    while some {
-        println!("Value: {}", some);
-        some = !some;
-    }
+    let sum = |a,b| a+b;
+    sum(5,6);
 }
