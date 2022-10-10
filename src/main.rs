@@ -1,38 +1,40 @@
-struct Car{
-    model: String,
-    year: i32,
-    color: String,
+trait Employee{
+    fn do_work(&mut self);
+    fn show_balance(&self);
 }
 
-impl Car{
-    fn get_year(&self)->&i32{
-        &self.year
+impl Employee for Developer{
+    fn do_work(&mut self){
+        self.cash += self.sallary;
     }
+    fn show_balance(&self){
+        println!("The balance is: {}", self.cash);
+    }
+}
 
-    fn change_color(&mut self, color:String){
-        self.color = color;
+impl ToString for Developer{
+    fn to_string(&self) -> std::string::String{
+        format!("My name is {}, i'm {} yo my profession is developer", 
+        self.name, self.age)
     }
+}
 
-    fn new(model: String, year: i32, color: String) -> Car{
-        Car{
-            model,
-            year,
-            color
-        }
-    }
+struct Developer{
+    name: String,
+    age: i32,
+    cash: i32,
+    sallary: i32
 }
 
 fn main(){
-    let mut car = Car{
-        model: "Honda".to_string(),
-        year: 2015,
-        color: "Red".to_string()
+    let mut dev = Developer{
+        name: "Yuriy".to_string(),
+        age: 37,
+        cash: 30,
+        sallary: 10
     };
 
-    println!("Year: {}", car.get_year().to_string());
-    car.change_color("Black".to_string());
-
-    let new_car = Car::new("BMW".to_string(), 2021, "Yellow".to_string());
-    let year = new_car.get_year();
-    println!("Year of new car: {}", year);
+    dev.do_work();
+    dev.show_balance();
+    println!("Introduce: {}", dev.to_string());
 }
