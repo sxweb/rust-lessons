@@ -1,40 +1,28 @@
-trait Employee{
-    fn do_work(&mut self);
-    fn show_balance(&self);
+trait Vehicle{
+    fn change_color(&mut self, color: String);
 }
 
-impl Employee for Developer{
-    fn do_work(&mut self){
-        self.cash += self.sallary;
-    }
-    fn show_balance(&self){
-        println!("The balance is: {}", self.cash);
+impl Vehicle for Car{
+    fn change_color(&mut self, color: String){
+        self.color = color;
     }
 }
 
-impl ToString for Developer{
-    fn to_string(&self) -> std::string::String{
-        format!("My name is {}, i'm {} yo my profession is developer", 
-        self.name, self.age)
-    }
-}
-
-struct Developer{
-    name: String,
-    age: i32,
-    cash: i32,
-    sallary: i32
+struct Car{
+    model: String,
+    year: i32,
+    color: String,
+    owner: String
 }
 
 fn main(){
-    let mut dev = Developer{
-        name: "Yuriy".to_string(),
-        age: 37,
-        cash: 30,
-        sallary: 10
+    let mut car = Car{
+        model: "Subaru".to_string(),
+        year: 2015,
+        color: "Blue".to_string(),
+        owner: "Yuriy".to_string()
     };
 
-    dev.do_work();
-    dev.show_balance();
-    println!("Introduce: {}", dev.to_string());
+    car.change_color("white".to_string());
+    println!("The color is: {}", car.color);
 }
