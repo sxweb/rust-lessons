@@ -1,28 +1,40 @@
-trait Vehicle{
-    fn change_color(&mut self, color: String);
-}
-
-impl Vehicle for Car{
-    fn change_color(&mut self, color: String){
-        self.color = color;
-    }
-}
-
 struct Car{
     model: String,
-    year: i32,
     color: String,
-    owner: String
+    year: i32
+}
+
+struct Person{
+    name: String,
+    age: i32,
+    car: Car
 }
 
 fn main(){
-    let mut car = Car{
-        model: "Subaru".to_string(),
-        year: 2015,
-        color: "Blue".to_string(),
-        owner: "Yuriy".to_string()
+    let name = "Yuriy";
+    println!("Hello, {}", name);
+    let mut lada = Car{
+        model: "Lada".to_string(),
+        color: "Yellow".to_string(),
+        year: 2008
+    };
+    let mut bmw = Car{
+        model: "BMW".to_string(),
+        color: "Black".to_string(),
+        year: 2010
     };
 
-    car.change_color("white".to_string());
-    println!("The color is: {}", car.color);
+    let mut yuriy = Person{
+        name: "Yuriy".to_string(),
+        age: 37,
+        car: lada
+    };
+
+    buy_car(yuriy, bmw);
 }
+
+fn buy_car(person : Person, car : Car){
+    person.car = car;
+    println!("Congr, you got a {}", car.model.to_string());
+}
+
