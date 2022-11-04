@@ -1,15 +1,16 @@
-fn main(){
-    let num = 10;
+use std::io;// i - input, o - output
 
-    match num {
-        15 => println!("the num is 15"),
-        10 => {
-            println!("the num is 10");
-            println!("the num matched");
+fn main(){
+    let mut name = String::new();
+
+    println!("Input your name");
+
+    match io::stdin().read_line(&mut name){
+        Ok(_) =>{
+            println!("Hello, {}", name);
         },
-        5..=50 =>{
-            println!("The num is between 5 and 10");
-        },
-        _ => println!("no any matches")
+        Err(e) =>{
+            println!("Some error");
+        }
     }
 }
