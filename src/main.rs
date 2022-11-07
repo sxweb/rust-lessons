@@ -1,50 +1,44 @@
-use std::io;
-
 fn main(){
-    let mut a_str = String::new();
-    let mut b_str = String::new();
-    let mut c_str = String::new();
+    let mut array = [1, 3, 4, 5, 8];
+    println!("Array value is: {:?}", array);
+    println!("{:?}", array[2]);
 
-    loop{
-        println!("Enter a value:");
+    array[2] = 7;
+    println!("{:?}", array[2]);
 
-        match io::stdin().read_line(&mut a_str){
-            Ok(_) =>{},
-            Err(e) => println!("some error: {}", e)
-        }
+    for i in array.iter(){
+        println!("{}", i);
+    }
 
-        println!("Enter b value:");
+    println!("The array length is: {}", array.len());
 
-        match io::stdin().read_line(&mut b_str){
-            Ok(_) => {},
-            Err(e) => println!("some error: {}", e)
-        }
+    for i in 0..array.len(){
+        println!("the value is: {}", array[i]);
+    }
 
-        println!("Enter c value:");
+    let mut i = 0;
+    while i < array.len(){
+        println!("the array value from while is: {}", array[i]);
+        i += 1;
+    }
 
-        match io::stdin().read_line(&mut c_str){
-            Ok(_) => {},
-            Err(e) => println!("some errors: {}", e)
-        }
-
-        let a: f64 = a_str.trim().parse().unwrap();
-        let b: f64 = b_str.trim().parse().unwrap();
-        let c: f64 = c_str.trim().parse().unwrap();
-
-        let d : f64 = (b * b) - 4.0 *a *c;
-
-        if d > 0.0{
-            let x1 = ((-b) + d.sqrt()) / (2.0 * a);
-            let x2 = ((-b) - d.sqrt()) / (2.0 * a);
-            println!("The x1 and x2 values are: {}, {}", x1, x2);
-        }
-        if d == 0.0{
-            let x = (-b) / (2.0 * a);
-            println!("The value of x is: {}", x);
-        }
-        if d < 0.0{
-            println!("No any resolves for this expression");
+    for i in array.iter(){
+        if i % 2 == 0{
+            println!("{}", i);
         }
     }
 
+    let someArray = [4, 5, 2, 5, 6, 4, 9];
+
+    let mut i = 0;
+    while i < someArray.len(){
+        let mut j = i + 1;
+        while j < someArray.len(){
+            if someArray[i] == someArray[j]{
+                println!("some array douvbled value is: {}", someArray[i]);
+            }
+            j += 1;
+        } 
+        i += 1;
+    }
 }
